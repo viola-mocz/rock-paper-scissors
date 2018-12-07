@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <script>
+        function computerPlay() {
+            const play = Math.floor(Math.random() * 3);
+            if (play === 0) {
+                return "rock";
+            } else if (play === 1) {
+                return "paper";
+            } else {
+                return "scissors";
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+
+            if (playerSelection === "rock") {
+                if (computerSelection === "rock") {
+                    console.log("It's a draw with rock and rock!");
+                    return [0, 0];
+                } else if (computerSelection === "paper") {
+                    console.log("You lose! Paper beats rock.");
+                    return [0, 1];
+                } else {
+                    console.log("You win! Rock beats scissors");
+                    return [1, 0];
+                }
+            } else if (playerSelection === "paper") {
+                if (computerSelection === "paper") {
+                    console.log("It's a draw with paper and paper!");
+                    return [0, 0];
+                } else if (computerSelection === "scissors") {
+                    console.log("You lose! Scissors beats paper.");
+                    return [0, 1];
+                } else {
+                    console.log("You win! Paper beats rock");
+                    return [1, 0];
+                }
+            } else {
+                if (computerSelection === "scissors") {
+                    console.log("It's a draw with scissors and scissors!");
+                    return [0, 0];
+                } else if (computerSelection === "rock") {
+                    console.log("You lose! Rock beats scissors.");
+                    return [0, 1];
+                } else {
+                    console.log("You win! Scissors beats paper");
+                    return [1, 0];
+                }
+            }
+        }
+
+        function game() {
+            alert("Let's play five rounds of rock, paper, scissors!");
+
+            let playerWin = 0;
+            let computerWin = 0;
+            let playerSelection;
+            let isValid;
+            let computerSelection;
+            let scores;
+
+            for (i = 1; i < 6; i++){
+                isValid = 0;
+                playerSelection = prompt(
+                "Round " + i + ". Type in rock, paper, or scissors.");
+                while (!isValid) {
+                    isValid = playerSelectionValid(playerSelection);
+                    if (isValid) {
+                        computerSelection = computerPlay();
+                        scores = playRound(playerSelection, computerSelection);
+                        playerWin += scores[0];
+                        computerWin += scores[1];
+                        console.log(
+                            "The score is, Player: " + playerWin + " Computer: " + computerWin);
+                    }
+                    else {
+                        playerSelection = prompt(
+                            "You did not type in rock, paper, or scissors. Try again.");   
+                    }
+                }
+            }
+            
+            if (playerWin > computerWin) {
+                console.log("Congratulations! You won against the computer!");
+            }
+            else if (playerWin < computerWin) {
+                console.log("Too bad. You lost against the computer. Better luck next time!");
+            }
+            else {
+                console.log("You tied against the computer. So close!")
+            }
+        }
+
+        function playerSelectionValid(playerSelection) {
+            let isValid = 0;
+            playerSelection = playerSelection.toLowerCase();
+            if ((playerSelection === "rock") || (playerSelection === "paper") || (playerSelection === "scissors")) {
+                isValid = 1;
+            }
+            return isValid;
+        }
+    </script>
+</body>
+
+</html>
