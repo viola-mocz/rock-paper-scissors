@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+.game-button, .message, .score {
+    display: none;
+}
+
+h1, .open {
+    width: 900px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.open, .begin, .message, .score, .game-button {
+    font-size: 18px;
+}
+
+.begin {
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+}
+
+.score-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    margin: 40px auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    margin: 20px auto;
+}
+
+.score {
+    margin: 0 30px;
+}
+
+.game-button {
+    margin: 0 20px;
+    padding: 10px;
+}
+
+.message {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
